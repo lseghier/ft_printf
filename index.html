@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Moderne - Accueil</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Portfolio</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#about" class="nav-link">À propos</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Bienvenue sur Mon Portfolio</h1>
+            <p class="hero-subtitle">Développeur Web Créatif & Passionné</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">Voir mes projets</a>
+                <a href="#contact" class="btn btn-secondary">Me contacter</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-card">
+                <div class="card-icon">✨</div>
+                <h3>Design Moderne</h3>
+                <p>Interfaces élégantes et intuitives</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À Propos de Moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Développeur Full Stack</h3>
+                    <p>Passionné par la création d'expériences web exceptionnelles, je combine créativité et expertise technique pour donner vie à vos projets digitaux.</p>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <span class="skill-icon">🎨</span>
+                            <span>Design UI/UX</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">💻</span>
+                            <span>Développement Web</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">📱</span>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-icon">⚡</span>
+                            <span>Performance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <h4>50+</h4>
+                        <p>Projets Complétés</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>30+</h4>
+                        <p>Clients Satisfaits</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>5+</h4>
+                        <p>Années d'Expérience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Mes Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Développement Web</h3>
+                    <p>Sites web modernes et performants avec les dernières technologies</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Applications Mobiles</h3>
+                    <p>Applications responsive adaptées à tous les appareils</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Design UI/UX</h3>
+                    <p>Interfaces utilisateur intuitives et esthétiques</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Optimisation SEO</h3>
+                    <p>Amélioration de la visibilité et du référencement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>Site E-commerce</h3>
+                            <p>Plateforme de vente en ligne moderne</p>
+                            <a href="#" class="portfolio-link">Voir le projet →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>Application Mobile</h3>
+                            <p>App de gestion de tâches intuitive</p>
+                            <a href="#" class="portfolio-link">Voir le projet →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>Refonte UI/UX</h3>
+                            <p>Modernisation d'interface utilisateur</p>
+                            <a href="#" class="portfolio-link">Voir le projet →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>Dashboard Analytics</h3>
+                            <p>Tableau de bord interactif</p>
+                            <a href="#" class="portfolio-link">Voir le projet →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-moi</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Travaillons ensemble!</h3>
+                    <p>N'hésitez pas à me contacter pour discuter de votre projet.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>contact@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span>+33 6 12 34 56 78</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Paris, France</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Sujet">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Votre message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Portfolio</div>
+                <div class="footer-links">
+                    <a href="#home">Accueil</a>
+                    <a href="#about">À propos</a>
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Portfolio. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
