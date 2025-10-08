@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfred Society GmbH - La Meilleure Conciergerie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'alfred-darker': '#050505',
+                        'alfred-dark': '#0a0a0a',
+                        'alfred-gold': '#D4AF37',
+                        'alfred-goldLight': '#F4E4B0',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #050505;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.6;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #D4AF37, 0 0 10px #D4AF37; }
+            100% { box-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37, 0 0 30px #D4AF37; }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes scroll {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        .scroll-indicator {
+            animation: scroll 2s ease-in-out infinite;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #D4AF37, #F4E4B0);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-alfred-dark/95 backdrop-blur-xl border-b border-[#D4AF37]/20 transition-all">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-[#D4AF37]">Alfred Society</h1>
+                    <p class="text-xs text-[#F4E4B0]/60 mt-0.5">La Meilleure Conciergerie</p>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#accueil" class="text-white/80 hover:text-[#D4AF37] transition-colors font-medium">Accueil</a>
+                    <a href="#about" class="text-white/80 hover:text-[#D4AF37] transition-colors font-medium">À propos</a>
+                    <a href="#services" class="text-white/80 hover:text-[#D4AF37] transition-colors font-medium">Services</a>
+                    <a href="#vision" class="text-white/80 hover:text-[#D4AF37] transition-colors font-medium">Vision</a>
+                    <a href="#contact" class="text-white/80 hover:text-[#D4AF37] transition-colors font-medium">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with 3D -->
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div id="canvas-container"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505] z-[1]"></div>
+        
+        <div class="relative z-10 text-center px-6 max-w-6xl mx-auto pt-20">
+            <p class="text-[#F4E4B0]/80 text-sm mb-4 tracking-widest uppercase">Bienvenue dans l'univers d'Alfred Society</p>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Le luxe commence par une <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F4E4B0]">
+                    demande bien formulée
+                </span>
+            </h1>
+            <p class="text-xl text-white/70 mb-12 max-w-3xl mx-auto">
+                La meilleure conciergerie du monde à votre service
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#membre" class="bg-gradient-to-r from-[#D4AF37] to-[#F4E4B0] text-black px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:scale-105 transition-transform inline-flex items-center justify-center gap-2">
+                    Devenir membre
+                    <span>→</span>
+                </a>
+                <a href="#contact" class="border-2 border-[#D4AF37] text-[#D4AF37] px-10 py-4 rounded-full font-bold text-lg hover:bg-[#D4AF37] hover:text-black transition-all">
+                    Contacter i.Alfred
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 scroll-indicator">
+            <div class="w-6 h-10 border-2 border-[#D4AF37]/50 rounded-full flex items-start justify-center p-2">
+                <div class="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="py-24 bg-[#0a0a0a]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Notre <span class="text-[#D4AF37]">Philosophie</span>
+                </h2>
+                <p class="text-xl text-white/60 italic">« Le luxe n'a pas besoin de parler fort, il agit avec précision. »</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-[#050505] border border-[#D4AF37]/20 p-8 rounded-2xl text-center hover:border-[#D4AF37]/50 transition-all">
+                    <div class="text-6xl mb-4">🛡️</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Discrétion</h3>
+                    <p class="text-white/60">Confidentialité absolue garantie pour tous nos membres</p>
+                </div>
+                <div class="bg-[#050505] border border-[#D4AF37]/20 p-8 rounded-2xl text-center hover:border-[#D4AF37]/50 transition-all">
+                    <div class="text-6xl mb-4">✨</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Excellence</h3>
+                    <p class="text-white/60">Un service irréprochable dans chaque détail</p>
+                </div>
+                <div class="bg-[#050505] border border-[#D4AF37]/20 p-8 rounded-2xl text-center hover:border-[#D4AF37]/50 transition-all">
+                    <div class="text-6xl mb-4">⏰</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Anticipation</h3>
+                    <p class="text-white/60">Nous répondons à vos besoins avant même que vous les exprimiez</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-[#050505]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Services <span class="text-[#D4AF37]">d'Exception</span>
+                </h2>
+                <p class="text-xl text-white/60">Du sourcing de supercars à l'aviation privée</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-[#D4AF37]/20 p-6 rounded-xl hover:border-[#D4AF37]/50 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-2xl">🏎️</div>
+                        <h3 class="text-white font-bold">Supercars & Véhicules d'Exception</h3>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-[#D4AF37]/20 p-6 rounded-xl hover:border-[#D4AF37]/50 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-2xl">✈️</div>
+                        <h3 class="text-white font-bold">Aviation Privée</h3>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-[#D4AF37]/20 p-6 rounded-xl hover:border-[#D4AF37]/50 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-2xl">⚓</div>
+                        <h3 class="text-white font-bold">Yachting de Prestige</h3>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-[#D4AF37]/20 p-6 rounded-xl hover:border-[#D4AF37]/50 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-2xl">🏰</div>
+                        <h3 class="text-white font-bold">Immobilier Haut de Gamme</h3>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-[#D4AF37]/20 p-6 rounded-xl hover:border-[#D4AF37]/50 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-2xl">🎭</div>
+                        <h3 class="text-white font-bold">Événements Privés</h3>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-[#D4AF37]/20 p-6 rounded-xl hover:border-[#D4AF37]/50 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="text-2xl">💎</div>
+                        <h3 class="text-white font-bold">Lifestyle Management 24/7</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Timeline -->
+    <section id="vision" class="py-24 bg-[#0a0a0a]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Notre <span class="text-[#D4AF37]">Vision</span>
+                </h2>
+                <p class="text-xl text-[#D4AF37] italic">« Always one step ahead. »</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto space-y-12">
+                <div class="flex items-center gap-8">
+                    <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F4E4B0] w-32 text-center">2025</div>
+                    <div class="flex-1 bg-[#050505] border border-[#D4AF37]/20 p-6 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-white mb-2">Leader Européen</h3>
+                        <p class="text-white/60">Consolidation de notre position comme référence absolue en Europe</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-8">
+                    <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F4E4B0] w-32 text-center">2026</div>
+                    <div class="flex-1 bg-[#050505] border border-[#D4AF37]/20 p-6 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-white mb-2">Expansion Mondiale</h3>
+                        <p class="text-white/60">Déploiement au Moyen-Orient et aux États-Unis</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-8">
+                    <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F4E4B0] w-32 text-center">2030</div>
+                    <div class="flex-1 bg-[#050505] border border-[#D4AF37]/20 p-6 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-white mb-2">Référence Mondiale</h3>
+                        <p class="text-white/60">La référence incontestée du luxe à l'échelle planétaire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-[#050505]">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Contactez <span class="text-[#D4AF37]">Alfred Society</span>
+            </h2>
+            <p class="text-xl text-white/70 mb-12">Notre équipe est disponible 24/7</p>
+            
+            <a href="https://wa.me/33781540434" target="_blank" class="inline-block bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-12 py-4 rounded-full font-bold text-lg shadow-2xl hover:scale-105 transition-transform">
+                📱 WhatsApp: +33 7 81 54 04 34
+            </a>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-[#0a0a0a] border border-[#D4AF37]/20 p-6 rounded-2xl">
+                    <div class="text-4xl mb-3">📞</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Téléphone</h3>
+                    <p class="text-[#D4AF37]">+33 7 81 54 04 34</p>
+                    <p class="text-white/60 text-sm">WhatsApp & Appel</p>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#D4AF37]/20 p-6 rounded-2xl">
+                    <div class="text-4xl mb-3">⏰</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Disponibilité</h3>
+                    <p class="text-[#D4AF37]">24/7</p>
+                    <p class="text-white/60 text-sm">365 jours par an</p>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#D4AF37]/20 p-6 rounded-2xl">
+                    <div class="text-4xl mb-3">📍</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Siège Social</h3>
+                    <p class="text-[#D4AF37]">Alfred Society GmbH</p>
+                    <p class="text-white/60 text-sm">Allemagne</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#050505] border-t border-[#D4AF37]/20 py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-[#D4AF37] mb-2">Alfred Society</h3>
+                <p class="text-xs text-[#F4E4B0]/60 mb-4">La Meilleure Conciergerie</p>
+                <p class="text-white/40 text-sm mb-4">© 2025 Alfred Society GmbH – Tous droits réservés.</p>
+                <p class="text-xs italic text-[#F4E4B0]/40">« Le luxe n'a pas besoin de parler fort, il agit avec précision. »</p>
+                <p class="text-xs text-white/40 mt-4">Powered by i.Alfred</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating i.Alfred Button -->
+    <a href="#contact" class="fixed bottom-6 right-6 bg-gradient-to-br from-[#D4AF37] to-[#F4E4B0] text-black p-4 rounded-full shadow-2xl glow z-50 hover:scale-110 transition-transform">
+        <span class="text-2xl">💬</span>
+    </a>
+
+    <script>
+        // Three.js Scene
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+
+        scene.background = new THREE.Color(0x050505);
+        scene.fog = new THREE.Fog(0x050505, 5, 15);
+
+        // Golden sphere
+        const geometry = new THREE.SphereGeometry(2.8, 100, 100);
+        const material = new THREE.MeshStandardMaterial({
+            color: 0xD4AF37,
+            metalness: 0.9,
+            roughness: 0.1,
+            emissive: 0xD4AF37,
+            emissiveIntensity: 0.3,
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        // Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 500;
+        const posArray = new Float32Array(particlesCount * 3);
+        
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 15;
+        }
+        
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.015,
+            color: 0xF4E4B0,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+        scene.add(ambientLight);
+        
+        const spotLight = new THREE.SpotLight(0xD4AF37, 2, 0, 0.3, 1);
+        spotLight.position.set(5, 5, 5);
+        scene.add(spotLight);
+        
+        const pointLight1 = new THREE.PointLight(0xD4AF37, 0.5);
+        pointLight1.position.set(-5, -5, -5);
+        scene.add(pointLight1);
+        
+        const pointLight2 = new THREE.PointLight(0xF4E4B0, 0.8);
+        pointLight2.position.set(0, 3, 0);
+        scene.add(pointLight2);
+
+        camera.position.z = 6;
+
+        // Animation
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+            
+            sphere.rotation.x = time * 0.15;
+            sphere.rotation.y = time * 0.2;
+            
+            // Distortion effect
+            const positions = geometry.attributes.position;
+            for (let i = 0; i < positions.count; i++) {
+                const x = positions.getX(i);
+                const y = positions.getY(i);
+                const z = positions.getZ(i);
+                
+                const distortion = Math.sin(time * 1.5 + x * 2) * 0.4;
+                const length = Math.sqrt(x*x + y*y + z*z);
+                positions.setXYZ(
+                    i,
+                    x * (1 + distortion / length),
+                    y * (1 + distortion / length),
+                    z * (1 + distortion / length)
+                );
+            }
+            positions.needsUpdate = true;
+            
+            particlesMesh.rotation.y = time * 0.03;
+            particlesMesh.rotation.x = Math.sin(time * 0.1) * 0.1;
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
