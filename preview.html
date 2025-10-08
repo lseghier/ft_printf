@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conciergerie de Luxe - Aperçu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#fdfbf7',
+                            100: '#f9f5ec',
+                            200: '#f2e8d5',
+                            300: '#e8d5b5',
+                            400: '#d4b483',
+                            500: '#c19a5b',
+                            600: '#a67c3d',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes scroll {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        .scroll-indicator {
+            animation: scroll 1.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-neutral-50">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg transition-all">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-serif font-bold text-gold-600">Conciergerie</h1>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#accueil" class="text-neutral-700 hover:text-gold-600 transition-colors font-medium">Accueil</a>
+                    <a href="#services" class="text-neutral-700 hover:text-gold-600 transition-colors font-medium">Services</a>
+                    <a href="#about" class="text-neutral-700 hover:text-gold-600 transition-colors font-medium">À Propos</a>
+                    <a href="#contact" class="text-neutral-700 hover:text-gold-600 transition-colors font-medium">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with 3D -->
+    <section id="accueil" class="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-50 to-gold-50">
+        <div id="canvas-container"></div>
+        
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-neutral-900 mb-6">
+                Excellence en <span class="text-gold-600">Conciergerie</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-neutral-600 mb-8 max-w-3xl mx-auto">
+                Un service de conciergerie de luxe dédié à simplifier votre quotidien avec élégance et discrétion
+            </p>
+            <a href="#services" class="inline-flex items-center gap-2 bg-gold-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-gold-700 transition-all hover:scale-105 shadow-lg">
+                Découvrir nos services
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+            <div class="w-6 h-10 border-2 border-neutral-400 rounded-full flex items-start justify-center p-2">
+                <div class="w-1.5 h-1.5 bg-neutral-400 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-neutral-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-neutral-900 mb-4">Nos Services</h2>
+                <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+                    Une gamme complète de services premium pour répondre à tous vos besoins
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-t-2xl"></div>
+                    <div class="mb-6 inline-flex p-4 bg-gold-50 rounded-xl group-hover:bg-gold-100 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-neutral-900">Gestion de Propriété</h3>
+                    <p class="text-neutral-600">Gestion complète de vos résidences principales et secondaires avec un service discret et professionnel.</p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-t-2xl"></div>
+                    <div class="mb-6 inline-flex p-4 bg-gold-50 rounded-xl group-hover:bg-gold-100 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"></path><path d="M7 13l4 4 4-4"></path><path d="M7 9l4-4 4 4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-neutral-900">Transport Premium</h3>
+                    <p class="text-neutral-600">Chauffeurs privés et véhicules de luxe disponibles 24/7 pour tous vos déplacements.</p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-t-2xl"></div>
+                    <div class="mb-6 inline-flex p-4 bg-gold-50 rounded-xl group-hover:bg-gold-100 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-neutral-900">Voyages sur Mesure</h3>
+                    <p class="text-neutral-600">Organisation de voyages d'exception avec hébergements exclusifs et expériences uniques.</p>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-t-2xl"></div>
+                    <div class="mb-6 inline-flex p-4 bg-gold-50 rounded-xl group-hover:bg-gold-100 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-neutral-900">Événements Privés</h3>
+                    <p class="text-neutral-600">Planification et coordination d'événements privés haut de gamme et célébrations.</p>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-t-2xl"></div>
+                    <div class="mb-6 inline-flex p-4 bg-gold-50 rounded-xl group-hover:bg-gold-100 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-neutral-900">Lifestyle Management</h3>
+                    <p class="text-neutral-600">Assistance quotidienne pour tous vos besoins personnels et professionnels.</p>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-t-2xl"></div>
+                    <div class="mb-6 inline-flex p-4 bg-gold-50 rounded-xl group-hover:bg-gold-100 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-neutral-900">Sécurité & Confidentialité</h3>
+                    <p class="text-neutral-600">Service discret avec la plus haute confidentialité et sécurité garantie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-neutral-900 mb-6">
+                        L'Excellence au Service du Luxe
+                    </h2>
+                    <div class="space-y-4 text-neutral-600 text-lg">
+                        <p>Depuis plus de 15 ans, notre conciergerie de luxe s'engage à offrir un service d'excellence à une clientèle exigeante et internationale.</p>
+                        <p>Notre équipe de professionnels dévoués travaille 24/7 pour anticiper vos besoins et transformer chaque demande en une expérience exceptionnelle.</p>
+                        <p>Discrétion, réactivité et excellence sont les piliers de notre engagement à vos côtés.</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-8 mt-12">
+                        <div class="text-center">
+                            <div class="text-4xl font-serif font-bold text-gold-600 mb-2">15+</div>
+                            <div class="text-sm text-neutral-600">Années d'expérience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-serif font-bold text-gold-600 mb-2">500+</div>
+                            <div class="text-sm text-neutral-600">Clients satisfaits</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-serif font-bold text-gold-600 mb-2">24/7</div>
+                            <div class="text-sm text-neutral-600">Disponibilité</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative floating">
+                    <div class="aspect-square bg-gradient-to-br from-gold-100 to-gold-200 rounded-3xl p-12 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 text-gold-600 opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-gold-600 text-white p-6 rounded-2xl shadow-xl">
+                        <p class="font-semibold">Service Premium</p>
+                        <p class="text-sm text-gold-100">Disponible 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-neutral-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">Contactez-nous</h2>
+                <p class="text-xl text-neutral-300 mb-12">
+                    Notre équipe est à votre disposition pour discuter de vos besoins et vous proposer des solutions sur mesure.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold mb-2">Disponibilité</h3>
+                        <p class="text-neutral-400">24/7, 365 jours par an</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold mb-2">International</h3>
+                        <p class="text-neutral-400">Service mondial</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold mb-2">Confidentialité</h3>
+                        <p class="text-neutral-400">Garantie absolue</p>
+                    </div>
+                </div>
+                <a href="mailto:contact@conciergerie.fr" class="inline-flex items-center gap-2 bg-gold-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-gold-700 transition-all hover:scale-105 shadow-lg">
+                    Demander un devis
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 text-neutral-300 border-t border-neutral-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-serif font-bold text-gold-400 mb-4">Conciergerie</h3>
+                    <p class="text-sm text-neutral-400">Votre service de conciergerie de luxe dédié à l'excellence et au service personnalisé.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Liens Rapides</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#accueil" class="hover:text-gold-400 transition-colors">Accueil</a></li>
+                        <li><a href="#services" class="hover:text-gold-400 transition-colors">Services</a></li>
+                        <li><a href="#about" class="hover:text-gold-400 transition-colors">À Propos</a></li>
+                        <li><a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2">📞 +33 1 23 45 67 89</li>
+                        <li class="flex items-center gap-2">✉️ contact@conciergerie.fr</li>
+                        <li class="flex items-center gap-2">📍 Paris, France</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Suivez-nous</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="p-2 bg-neutral-800 rounded-full hover:bg-gold-400 hover:text-neutral-900 transition-colors">📷</a>
+                        <a href="#" class="p-2 bg-neutral-800 rounded-full hover:bg-gold-400 hover:text-neutral-900 transition-colors">👥</a>
+                        <a href="#" class="p-2 bg-neutral-800 rounded-full hover:bg-gold-400 hover:text-neutral-900 transition-colors">💼</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-neutral-800 mt-8 pt-8 text-center text-sm text-neutral-400">
+                <p>&copy; 2024 Conciergerie de Luxe. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Three.js Scene
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        // Create golden sphere
+        const geometry = new THREE.SphereGeometry(2, 64, 64);
+        const material = new THREE.MeshStandardMaterial({
+            color: 0xc19a5b,
+            metalness: 0.8,
+            roughness: 0.2,
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        // Create particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 200;
+        const posArray = new Float32Array(particlesCount * 3);
+        
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+        
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0xd4b483,
+            transparent: true,
+            opacity: 0.6
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        
+        const pointLight1 = new THREE.PointLight(0xffffff, 1);
+        pointLight1.position.set(10, 10, 10);
+        scene.add(pointLight1);
+        
+        const pointLight2 = new THREE.PointLight(0xc19a5b, 0.5);
+        pointLight2.position.set(-10, -10, -10);
+        scene.add(pointLight2);
+
+        camera.position.z = 5;
+
+        // Animation
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+            
+            sphere.rotation.x = time * 0.2;
+            sphere.rotation.y = time * 0.3;
+            
+            // Add distortion effect manually
+            const positions = geometry.attributes.position;
+            for (let i = 0; i < positions.count; i++) {
+                const x = positions.getX(i);
+                const y = positions.getY(i);
+                const z = positions.getZ(i);
+                
+                const distortion = Math.sin(time * 2 + x * 2) * 0.1;
+                const length = Math.sqrt(x*x + y*y + z*z);
+                positions.setXYZ(
+                    i,
+                    x * (1 + distortion / length),
+                    y * (1 + distortion / length),
+                    z * (1 + distortion / length)
+                );
+            }
+            positions.needsUpdate = true;
+            
+            particlesMesh.rotation.y = time * 0.05;
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
