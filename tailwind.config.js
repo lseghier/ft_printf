@@ -9,16 +9,36 @@ module.exports = {
     extend: {
       colors: {
         gold: {
-          50: '#fdfbf7',
-          100: '#f9f5ec',
-          200: '#f2e8d5',
-          300: '#e8d5b5',
-          400: '#d4b483',
-          500: '#c19a5b',
-          600: '#a67c3d',
-          700: '#8b6632',
-          800: '#73542b',
-          900: '#614626',
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
+        },
+        alfred: {
+          dark: '#0a0a0a',
+          darker: '#050505',
+          gold: '#D4AF37',
+          goldLight: '#F4E4B0',
+        },
+      },
+      animation: {
+        'glow': 'glow 2s ease-in-out infinite alternate',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        glow: {
+          '0%': { boxShadow: '0 0 5px #D4AF37, 0 0 10px #D4AF37, 0 0 15px #D4AF37' },
+          '100%': { boxShadow: '0 0 10px #D4AF37, 0 0 20px #D4AF37, 0 0 30px #D4AF37' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
         },
       },
       fontFamily: {

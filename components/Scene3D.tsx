@@ -2,48 +2,51 @@
 
 import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Sphere, MeshDistortMaterial, Float } from '@react-three/drei'
+import { OrbitControls, Sphere, MeshDistortMaterial, Float, SpotLight } from '@react-three/drei'
 import * as THREE from 'three'
 
-function AnimatedSphere() {
+function GoldenSphere() {
   const meshRef = useRef<THREE.Mesh>(null)
   
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.2
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.3
+      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.15
+      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.2
     }
   })
 
   return (
-    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
-      <Sphere ref={meshRef} args={[1, 100, 100]} scale={2.5}>
+    <Float speed={1} rotationIntensity={0.3} floatIntensity={0.4}>
+      <Sphere ref={meshRef} args={[1, 100, 100]} scale={2.8}>
         <MeshDistortMaterial
-          color="#c19a5b"
+          color="#D4AF37"
           attach="material"
-          distort={0.3}
-          speed={2}
-          roughness={0.2}
-          metalness={0.8}
+          distort={0.4}
+          speed={1.5}
+          roughness={0.1}
+          metalness={0.9}
+          emissive="#D4AF37"
+          emissiveIntensity={0.3}
         />
       </Sphere>
     </Float>
   )
 }
 
-function Particles() {
+function CinematicParticles() {
   const particlesRef = useRef<THREE.Points>(null)
   
-  const particlesCount = 200
+  const particlesCount = 500
   const positions = new Float32Array(particlesCount * 3)
   
   for (let i = 0; i < particlesCount * 3; i++) {
-    positions[i] = (Math.random() - 0.5) * 10
+    positions[i] = (Math.random() - 0.5) * 15
   }
 
   useFrame((state) => {
     if (particlesRef.current) {
-      particlesRef.current.rotation.y = state.clock.getElapsedTime() * 0.05
+      particlesRef.current.rotation.y = state.clock.getElapsedTime() * 0.03
+      particlesRef.current.rotation.x = Math.sin(state.clock.getElapsedTime() * 0.1) * 0.1
     }
   })
 
@@ -58,11 +61,12 @@ function Particles() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.02}
-        color="#d4b483"
+        size={0.015}
+        color="#F4E4B0"
         sizeAttenuation
         transparent
-        opacity={0.6}
+        opacity={0.8}
+        blending={THREE.AdditiveBlending}
       />
     </points>
   )
@@ -70,18 +74,32 @@ function Particles() {
 
 export default function Scene3D() {
   return (
-    <div className="absolute inset-0 z-0">
-      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#c19a5b" />
-        <AnimatedSphere />
-        <Particles />
+    <div className="absolute inset-0 z-0 opacity-60">
+      <Canvas camera={{ position: [0, 0, 6], fov: 60 }}>
+        <color attach="background" args={['#050505']} />
+        <fog attach="fog" args={['#050505', 5, 15]} />
+        
+        <ambientLight intensity={0.2} />
+        <SpotLight
+          position={[5, 5, 5]}
+          angle={0.3}
+          penumbra={1}
+          intensity={2}
+          color="#D4AF37"
+        />
+        <pointLight position={[-5, -5, -5]} intensity={0.5} color="#D4AF37" />
+        <pointLight position={[0, 3, 0]} intensity={0.8} color="#F4E4B0" />
+        
+        <GoldenSphere />
+        <CinematicParticles />
+        
         <OrbitControls 
           enableZoom={false} 
           enablePan={false}
           autoRotate
-          autoRotateSpeed={0.5}
+          autoRotateSpeed={0.3}
+          minPolarAngle={Math.PI / 3}
+          maxPolarAngle={Math.PI / 1.5}
         />
       </Canvas>
     </div>

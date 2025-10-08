@@ -13,8 +13,8 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Conciergerie de Luxe - Services Premium',
-  description: 'Votre conciergerie de luxe dédiée à l\'excellence et au service personnalisé',
+  title: 'Alfred Society GmbH - La Meilleure Conciergerie',
+  description: 'Le luxe commence par une demande bien formulée. Bienvenue dans l\'univers d\'Alfred Society, la meilleure conciergerie du monde.',
 }
 
 export default function RootLayout({

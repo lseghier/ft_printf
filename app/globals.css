@@ -9,11 +9,15 @@
 
 @layer base {
   body {
-    @apply bg-neutral-50 text-neutral-900;
+    @apply bg-alfred-darker text-white;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+  }
+
+  * {
+    @apply transition-colors duration-300;
   }
 }
 
@@ -30,17 +34,32 @@ html {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-neutral-100;
+  @apply bg-alfred-dark;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gold-400 rounded-full;
+  background: linear-gradient(180deg, #D4AF37, #F4E4B0);
+  @apply rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gold-500;
+  background: linear-gradient(180deg, #F4E4B0, #D4AF37);
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
 }
